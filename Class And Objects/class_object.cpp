@@ -35,6 +35,17 @@ public:
     }
 };
 
+class Account
+{
+private:
+    double balance;
+    string password; // sata hiding
+
+public:
+    string name;
+    string user_name;
+};
+
 int main()
 {
     ios::sync_with_stdio(false);
