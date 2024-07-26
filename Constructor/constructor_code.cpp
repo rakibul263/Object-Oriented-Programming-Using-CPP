@@ -1,39 +1,63 @@
 /***************************************
 Author: Md Rakibul Hasan
-date: 2024-07-05 12:45:35
+date: 2024-07-22 11:45:46
 ****************************************/
+
+// three types of constructor
+// non - parameterized || parameterized || copy constructor;
 
 #include <bits/stdc++.h>
 using namespace std;
 
 class Teacher
 {
+private:
+    double salary;
+
 public:
     string name;
     string dept;
-    string subject;
-    double salary;
+    string sub;
 
-    /* Teacher() // non parameterize
+    // constructor || non - parameterized
+    Teacher()
     {
-        cout << "dept = Computer Science Engineering";
-    } */
+        // cout << "Hi! I am constructor\n";
+        dept = "computer science";
+    }
 
-    // parameterize constructor
-    /* Teacher(string n, string d, string s, double sal)
-    {
-        name = n;
-        dept = d;
-        subject = s;
-        salary = sal;
-    } */
-
-    Teacher(string name, string dept, string subject, double salary)
+    // parameterized constructor
+    Teacher(string name, string dept, string sub)
     {
         this->name = name;
         this->dept = dept;
-        this->subject = subject;
-        this->salary = salary;
+        this->sub = sub;
+    }
+
+    // copy constructor
+    Teacher(Teacher &oriObj) // pass by reference
+    {
+        cout << "I am a copy constructor\n";
+        this->name = oriObj.name;
+        this->dept = oriObj.dept;
+        this->sub = oriObj.sub;
+    }
+
+    void setSalary(double s)
+    {
+        salary = s;
+    }
+
+    double getSalary()
+    {
+        return salary;
+    }
+
+    void getinfo()
+    {
+        cout << "Name: " << name << endl;
+        cout << "Dept: " << dept << endl;
+        cout << "Sub : " << sub << endl;
     }
 };
 
@@ -42,14 +66,17 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    Teacher t1("Shuvo", "CSE", "C++", 25000);
-    // t1.name = "Shuvo";
-    // // t1.dept = "EEE";
-    // t1.subject = "Programming and Problem Solving";
-    // t1.salary = 25000;
+    Teacher t1("Shuvo", "CSE", "c++"); // constructor call
 
-    cout << t1.name << endl;
-    cout << t1.dept << endl;
+    // t1.name = "Noori";
+    // t1.sub = "c++";
+
+    // cout << t1.dept << endl;
+    // t1.getinfo();
+
+    // copy constructor
+    Teacher t2(t1);
+    t2.getinfo();
 
     return 0;
 }
